@@ -1,0 +1,10 @@
+*.class
+
+.classpath
+.settings/
+.project
+.build/
+
+.DS_Store
+*.swp
+*.swo
