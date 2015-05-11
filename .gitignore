@@ -1,6 +1,5 @@
 *.class
 
-.settings/
 .build/
 
 .DS_Store
