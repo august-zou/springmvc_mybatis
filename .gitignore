@@ -1,6 +1,7 @@
 *.class
 
 .build/
+.classpath
 
 .DS_Store
 *.swp
