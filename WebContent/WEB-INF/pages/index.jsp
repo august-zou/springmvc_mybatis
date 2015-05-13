@@ -12,9 +12,11 @@
 <% Object userName = request.getSession().getAttribute("userName"); %>
 <c:if test="${userName==null }">
   <a href="<c:url value="login" />">login</a>
+    <a href="<c:url value="register" />">register</a>
+  
 </c:if>
 <c:if test="${userName!=null }">
-  登陆成功 <%=userName.toString() %> <a href="<c:url value="login" />">logout</a>
+  登陆成功 <%=userName.toString() %> <a href="<c:url value="sessions/destroy" />">logout</a>
 </c:if>
 </body>
 </html>

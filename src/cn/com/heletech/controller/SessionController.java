@@ -11,10 +11,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import cn.com.heletech.model.User;
 
 @Controller
-public class SessionController {
+public class SessionController extends ApplicationController {
 	
-	@Autowired
-	private  HttpServletRequest request;
+
 	
 	@RequestMapping(value="/login",method = RequestMethod.GET)
 	public String login() {
@@ -25,6 +24,12 @@ public class SessionController {
 	public String create(User user) {
 		System.out.print(user.getUserName());
 		request.getSession().setAttribute("userName", user.getUserName());  
+		return "redirect:/";
+	}
+	
+	@RequestMapping(value="/sessions/destroy",method = RequestMethod.GET)
+	public String destroy(User user) {
+		request.getSession().setAttribute("userName", null);  
 		return "redirect:/";
 	}
 }
