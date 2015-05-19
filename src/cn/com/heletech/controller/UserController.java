@@ -28,7 +28,7 @@ public class UserController extends ApplicationController {
 		List<User> users = userService.findAllUsers();
 		for(User u : users){
 			System.out.print("userName: "+u.getUserName());
-			System.out.print("password: "+u.getPassword());
+			System.out.print("  password: "+u.getPassword());
 		}
         return "users/index";
     }
