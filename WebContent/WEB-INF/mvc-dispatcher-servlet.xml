@@ -9,6 +9,8 @@
         http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
     <context:component-scan base-package="cn.com.heletech.controller"/>
+    <context:component-scan base-package="cn.com.heletech.service"/>
+    
     
    <!--  <mvc:resources mapping="/resources/**" location="/,/assets/"/> -->
 
