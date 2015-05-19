@@ -8,6 +8,5 @@
 	<select id="findAllUsers" resultType="cn.com.heletech.model.User">
 		select * from users 
 	</select>
-	
-	
+		
 </mapper>
