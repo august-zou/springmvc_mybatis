@@ -8,9 +8,8 @@
         http://www.springframework.org/schema/mvc
         http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
-	<context:component-scan base-package="cn.com.heletech.controller" />
+    <context:component-scan base-package="cn.com.heletech.controller" />
 	<context:component-scan base-package="cn.com.heletech.v1.api.controller" />
-	<context:component-scan base-package="cn.com.heletech.service" />
 
 	<mvc:annotation-driven>
 		<mvc:message-converters register-defaults="true">

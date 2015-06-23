@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>    
+<beans xmlns="http://www.springframework.org/schema/beans"    
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"   
+    xmlns:p="http://www.springframework.org/schema/p"  
+    xmlns:aop="http://www.springframework.org/schema/aop"   
+    xmlns:context="http://www.springframework.org/schema/context"  
+    xmlns:jee="http://www.springframework.org/schema/jee"  
+    xmlns:tx="http://www.springframework.org/schema/tx"  
+    xmlns:mybatis="http://mybatis.org/schema/mybatis-spring"
+    xsi:schemaLocation="    
+        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd  
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd  
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd  
+        http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee.xsd  
+        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+        http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring.xsd">    
+       
+    <!--引入属性文件 -->
+    <context:property-placeholder location="classpath:config/jdbc.properties"/> 
+    
+    
+    <!-- 该包下的类支持注解，表示会被当作{@code mybatis mapper}处理 配置了之后表示可以自动引入mapper类-->
+    <mybatis:scan base-package="cn.com.heletech.dao"/>
+
+<context:component-scan base-package="cn.com.heletech.service" />
+    
+ 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+        destroy-method="close" p:driverClassName="com.mysql.jdbc.Driver"
+        p:url="${jdbc.url}" 
+        p:username="${jdbc.username}" 
+        p:password="${jdbc.password}"
+        p:maxActive="10" 
+        p:maxIdle="10">
+    </bean>
+  
+ 	<!-- mybatis配置 -->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource" />
+        <property name="mapperLocations"  
+              value="classpath:cn/com/heletech/dao/mappers/*Mapper.xml" />  
+       <property name="typeAliasesPackage" value="cn.com.heletech.model" /> 
+    </bean> 
+</beans>   
